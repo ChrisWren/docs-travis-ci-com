@@ -129,9 +129,12 @@ You can interpolate the following variables:
 * *repository_name*: the slug without the username
 * *repository*: same as repository_slug [Deprecated]
 * *build_number*: build number
+* *build_id*: build id
 * *branch*: branch build name
 * *commit*: shortened commit SHA
 * *author*: commit author name
+* *commit_message*: commit message of build
+* *result*: result of build
 * *message*: travis message to the build
 * *duration*: duration of the build
 * *compare_url*: commit change view URL
@@ -308,7 +311,7 @@ Travis CI supports notifying arbitrary [Slack](http://slack.com) channels about
 build results.
 
 On Slack, set up a [new Travis CI
-integration](https://travisci.slack.com/services/new/travis). Select a channel,
+integration](https://my.slack.com/services/new/travis). Select a channel,
 and you'll find the details to paste into your .travis.yml.
 
 <figure>
@@ -384,9 +387,6 @@ As with other notification types you can specify when webhook payloads will be s
         on_success: [always|never|change] # default: always
         on_failure: [always|never|change] # default: always
         on_start: [true|false] # default: false
-
-Here is an example payload of what will be `POST`ed to your webhook URLs:
-[gist.github.com/1225015](https://gist.github.com/1225015)
 
 ### Webhooks Delivery Format
 

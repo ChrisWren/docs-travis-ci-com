@@ -128,11 +128,17 @@ In cases you need to create users for your database, you can do it using a `befo
     before_script:
       - mongo mydb_test --eval 'db.addUser("travis", "test");'
 
-#### JVM-based projects
+#### MongoDB may not be immediately accepting connections
 
-For JVM-based projects that use the official MongoDB Java driver, you'll have to use `127.0.0.1` instead of `localhost` to connect to
-work around [this known MongoDB Java driver issue](https://jira.mongodb.org/browse/JAVA-249) that affects Linux. Note that this issue has been
-fixed in version 2.8.0 of the Java client for MongoDB, so it only affects projects using versions older than that.
+A few users have reported that MongoDB may not be accepting connections when the job attempts to
+execute commands.
+The issue is intermittent at best, and the only reliable means to avoid it is to
+inject artificial wait before making the first connection:
+
+    # .travis.yml
+    before_script:
+      - sleep 15
+      - mongo mydb_test --eval 'db.addUser("travis", "test");'
 
 ### CouchDB
 

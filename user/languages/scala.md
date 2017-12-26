@@ -25,8 +25,8 @@ Thanks to sbt ability to perform actions against multiple Scala versions, it is 
     language: scala
     scala:
        - 2.9.3
-       - 2.10.2
-       - 2.10.3-RC3
+       - 2.10.4
+       - 2.11.0
 
 ### Default Test Command
 
@@ -38,7 +38,7 @@ to run your test suite. This can be overridden as described in the [general buil
 
 ### Dependency Management
 
-Because Travis CI Scala builder assumes sbt dependency management is used by default, it naturally will pull down project dependencies before running tests without any effort on your side.
+Because Travis CI Scala builder assumes sbt dependency management is used by default, it automatically will pull down project dependencies before running tests without any effort on your side.
 
 ### Custom sbt Arguments
 
@@ -75,6 +75,12 @@ As for any JVM language, it is also possible to [test against multiple JDKs](/us
 
 For Scala projects, `env`, `scala`, and `jdk` can be given as arrays
 to construct a build matrix.
+
+## Environment Variable
+
+The version of Scala a job is using is available as:
+
+    TRAVIS_SCALA_VERSION
 
 ## Examples
 
